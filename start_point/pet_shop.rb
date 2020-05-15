@@ -52,7 +52,12 @@ def customer_cash(customer_details)
     return customer_cash_balance
 end
 
-# def test_customer_cash
-#     cash = customer_cash(@customers[0])
-#     assert_equal(1000, cash)
+def remove_customer_cash(customer_details, amount_to_remove)
+    customer_details[:cash] -= amount_to_remove
+end
+
+# def test_remove_customer_cash
+#     customer = @customers[0]
+#     remove_customer_cash(customer, 100)
+#     assert_equal(900, customer[:cash])
 #   end
