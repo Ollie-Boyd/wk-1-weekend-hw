@@ -16,11 +16,15 @@ def add_or_remove_cash(pet_shop, amount_to_add_or_remove)
 end
 
 def pets_sold(pet_shop)
-    number_of_pets_sold= pet_shop[:admin][:pets_sold]
+    number_of_pets_sold = pet_shop[:admin][:pets_sold]
     return number_of_pets_sold
 end
 
-# def test_pets_sold
-#   sold = pets_sold(@pet_shop)
-#   assert_equal(0, sold)
-# end
+def increase_pets_sold(pet_shop, number_of_pets_to_increase_by)
+    pet_shop[:admin][:pets_sold] += number_of_pets_to_increase_by
+end
+#  def test_increase_pets_sold
+#     increase_pets_sold(@pet_shop,2)
+#     sold = pets_sold(@pet_shop)
+#     assert_equal(2, sold)
+#   end
