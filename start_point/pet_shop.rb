@@ -34,5 +34,14 @@ def pets_by_breed(pet_shop, breed)
     return pets_with_matching_breed
 end
 
+def find_pet_by_name(pet_shop, pet_name)
+    pets_with_matching_name = pet_shop[:pets].find{ |pet| pet[:name]==pet_name}
+    return pets_with_matching_name
+end
 
+
+# def test_find_pet_by_name__returns_pet
+#     pet = find_pet_by_name(@pet_shop, "Arthur")
+#     assert_equal("Arthur", pet[:name])
+# end
 
