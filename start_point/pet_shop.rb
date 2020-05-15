@@ -1,9 +1,11 @@
 
 
+def pet_shop_name(pet_shop)
+    shop_name = pet_shop[:name]
+    return shop_name
+end
 
 
-# def test_pet_shop_name
-#     name = pet_shop_name(@pet_shop)
-#     assert_equal("Camelot of Pets", name)
-# end
+
+
 
