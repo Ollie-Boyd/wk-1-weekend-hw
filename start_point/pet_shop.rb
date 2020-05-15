@@ -30,12 +30,9 @@ def stock_count(pet_shop)
 end
 
 def pets_by_breed(pet_shop, breed)
-    pets_with_matching_breed = pet_shop[:pets].filter_map{ |pet| pet if pet[:breed]=="British Shorthair"}
+    pets_with_matching_breed = pet_shop[:pets].filter_map{ |pet| pet if pet[:breed]==breed}
     return pets_with_matching_breed
 end
 
-  # def test_all_pets_by_breed__found
-  #   pets = pets_by_breed(@pet_shop, "British Shorthair")
-  #   assert_equal(2, pets.count)
-  # end
+
 
