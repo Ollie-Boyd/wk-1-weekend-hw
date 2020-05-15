@@ -56,8 +56,12 @@ def remove_customer_cash(customer_details, amount_to_remove)
     customer_details[:cash] -= amount_to_remove
 end
 
-# def test_remove_customer_cash
-#     customer = @customers[0]
-#     remove_customer_cash(customer, 100)
-#     assert_equal(900, customer[:cash])
-#   end
+def customer_pet_count(customer_details)
+    number_of_pets = customer_details[:pets].length()
+    return number_of_pets
+end
+
+  # def test_customer_pet_count
+  #   count = customer_pet_count(@customers[0])
+  #   assert_equal(0, count)
+  # end
