@@ -25,23 +25,22 @@ def increase_pets_sold(pet_shop, number_of_pets_to_increase_by)
 end
 
 def stock_count(pet_shop)
-    number_of_pets= pet_shop[:pets].count
+    number_of_pets = pet_shop[:pets].count
     return number_of_pets
 end
 
 def pets_by_breed(pet_shop, breed)
-    pets_with_matching_breed = pet_shop[:pets].filter_map{ |pet| pet if pet[:breed]==breed}
+    pets_with_matching_breed = pet_shop[:pets].filter_map{ |pet| pet if pet[:breed] == breed}
     return pets_with_matching_breed
 end
 
 def find_pet_by_name(pet_shop, pet_name)
-    pets_with_matching_name = pet_shop[:pets].find{ |pet| pet[:name]==pet_name}
+    pets_with_matching_name = pet_shop[:pets].find{ |pet| pet[:name] == pet_name}
     return pets_with_matching_name
 end
 
+def remove_pet_by_name(pet_shop, pet_name)    
+    pet_shop[:pets].delete_if{|pet| pet[:name] == pet_name}
+end
 
-# def test_find_pet_by_name__returns_pet
-#     pet = find_pet_by_name(@pet_shop, "Arthur")
-#     assert_equal("Arthur", pet[:name])
-# end
 
