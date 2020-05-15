@@ -46,3 +46,13 @@ end
 def add_pet_to_stock(pet_shop, new_pet)
     pet_shop[:pets].push(new_pet)
 end
+
+def customer_cash(customer_details)
+    customer_cash_balance = customer_details[:cash]
+    return customer_cash_balance
+end
+
+# def test_customer_cash
+#     cash = customer_cash(@customers[0])
+#     assert_equal(1000, cash)
+#   end
