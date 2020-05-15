@@ -23,8 +23,11 @@ end
 def increase_pets_sold(pet_shop, number_of_pets_to_increase_by)
     pet_shop[:admin][:pets_sold] += number_of_pets_to_increase_by
 end
-#  def test_increase_pets_sold
-#     increase_pets_sold(@pet_shop,2)
-#     sold = pets_sold(@pet_shop)
-#     assert_equal(2, sold)
-#   end
+
+def stock_count(pet_shop)
+    number_of_pets= pet_shop[:pets].count
+    return number_of_pets
+end
+
+
+
