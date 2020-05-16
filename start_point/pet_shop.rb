@@ -40,7 +40,7 @@ def find_pet_by_name(pet_shop, pet_name)
 end
 
 def remove_pet_by_name(pet_shop, pet_name)    
-    pet_shop[:pets].delete_if{|pet| pet[:name] == pet_name}
+    pet_shop[:pets].delete_if{ |pet| pet[:name] == pet_name}
 end
 
 def add_pet_to_stock(pet_shop, new_pet)
@@ -70,17 +70,34 @@ def pet_price(pet)
 end
 
 def customer_can_afford_pet(customer_details, pet_to_buy)
-    if (pet_to_buy != nil)
         customer_cash_balance = customer_cash(customer_details)
         pet_price = pet_price(pet_to_buy)
         balance_greater_or_equal_to_pet_price = pet_price <= customer_cash_balance
         return balance_greater_or_equal_to_pet_price
+end
+
+module MyRoot
+    def pet_exists
+        self != nil
     end
+end
+  
+class Hash
+    include MyRoot
+end
+  
+class NilClass
+    include MyRoot
 end
 
 
+
 def sell_pet_to_customer(pet_shop, pet_to_buy, customer_details)
-    if customer_can_afford_pet(customer_details,pet_to_buy)
+    p pet_to_buy
+    p pet_to_buy != nil
+    p pet_to_buy.pet_exists
+    
+    if pet_to_buy.pet_exists && customer_can_afford_pet(customer_details, pet_to_buy)      
         #get pet price
         pet_price = pet_price(pet_to_buy)
         #reduce customer cash
@@ -92,7 +109,7 @@ def sell_pet_to_customer(pet_shop, pet_to_buy, customer_details)
         remove_pet_by_name(pet_shop, pet_name)  
         # add pet to customer
         add_pet_to_customer(customer_details, pet_to_buy)
-        #increase number of pets sold
+        #increase number of pets sold by one
         increase_pets_sold(pet_shop, 1)
     end
 end
