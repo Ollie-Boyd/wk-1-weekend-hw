@@ -70,10 +70,12 @@ def pet_price(pet)
 end
 
 def customer_can_afford_pet(customer_details, pet_to_buy)
-    customer_cash_balance = customer_cash(customer_details)
-    pet_price = pet_price(pet_to_buy)
-    balance_greater_or_equal_to_pet_price = pet_price <= customer_cash_balance
-    return balance_greater_or_equal_to_pet_price
+    if (pet_to_buy != nil)
+        customer_cash_balance = customer_cash(customer_details)
+        pet_price = pet_price(pet_to_buy)
+        balance_greater_or_equal_to_pet_price = pet_price <= customer_cash_balance
+        return balance_greater_or_equal_to_pet_price
+    end
 end
 
 
@@ -92,18 +94,6 @@ def sell_pet_to_customer(pet_shop, pet_to_buy, customer_details)
         add_pet_to_customer(customer_details, pet_to_buy)
         #increase number of pets sold
         increase_pets_sold(pet_shop, 1)
-        
     end
 end
 
-# def test_sell_pet_to_customer__pet_found
-#     customer = @customers[0]
-#     pet = find_pet_by_name(@pet_shop,"Arthur")
-
-#     sell_pet_to_customer(@pet_shop, pet, customer)
-
-#     assert_equal(1, customer_pet_count(customer))
-#     assert_equal(1, pets_sold(@pet_shop))
-#     assert_equal(100, customer_cash(customer))
-#     assert_equal(1900, total_cash(@pet_shop))
-#   end
