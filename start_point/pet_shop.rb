@@ -61,20 +61,49 @@ def customer_pet_count(customer_details)
     return number_of_pets
 end
 
-def add_pet_to_customer(customer, new_pet)
-    customer[:pets].push(new_pet)
+def add_pet_to_customer(customer_details, new_pet)
+    customer_details[:pets].push(new_pet)
 end
 
-def customer_can_afford_pet(customer, pet_to_buy)
-    customer_cash_balance = customer_cash(customer)
-    pet_price = pet_to_buy[:price]
-    pet_less_than_balance = pet_price <= customer_cash_balance
+def pet_price(pet)
+    pet[:price]
+end
+
+def customer_can_afford_pet(customer_details, pet_to_buy)
+    customer_cash_balance = customer_cash(customer_details)
+    pet_price = pet_price(pet_to_buy)
+    balance_greater_or_equal_to_pet_price = pet_price <= customer_cash_balance
+    return balance_greater_or_equal_to_pet_price
 end
 
 
+def sell_pet_to_customer(pet_shop, pet_to_buy, customer_details)
+    if customer_can_afford_pet(customer_details,pet_to_buy)
+        #get pet price
+        pet_price = pet_price(pet_to_buy)
+        #reduce customer cash
+        remove_customer_cash(customer_details, pet_price)
+        #increase shop cash
+        add_or_remove_cash(pet_shop, pet_price)
+        # remove pet from shop
+        pet_name=pet_to_buy[:name]
+        remove_pet_by_name(pet_shop, pet_name)  
+        # add pet to customer
+        add_pet_to_customer(customer_details, pet_to_buy)
+        #increase number of pets sold
+        increase_pets_sold(pet_shop, 1)
+        
+    end
+end
 
-  # def test_customer_can_afford_pet__insufficient_funds
-  #   customer = @customers[1]
-  #   can_buy_pet = customer_can_afford_pet(customer, @new_pet)
-  #   assert_equal(false, can_buy_pet)
-  # end
+# def test_sell_pet_to_customer__pet_found
+#     customer = @customers[0]
+#     pet = find_pet_by_name(@pet_shop,"Arthur")
+
+#     sell_pet_to_customer(@pet_shop, pet, customer)
+
+#     assert_equal(1, customer_pet_count(customer))
+#     assert_equal(1, pets_sold(@pet_shop))
+#     assert_equal(100, customer_cash(customer))
+#     assert_equal(1900, total_cash(@pet_shop))
+#   end
