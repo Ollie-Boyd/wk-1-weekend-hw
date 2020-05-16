@@ -68,12 +68,13 @@ end
 def customer_can_afford_pet(customer, pet_to_buy)
     customer_cash_balance = customer_cash(customer)
     pet_price = pet_to_buy[:price]
-    pet_less_than_balance = pet_price < customer_cash_balance
+    pet_less_than_balance = pet_price <= customer_cash_balance
 end
 
 
-  # def test_customer_can_afford_pet__sufficient_funds
-  #   customer = @customers[0]
+
+  # def test_customer_can_afford_pet__insufficient_funds
+  #   customer = @customers[1]
   #   can_buy_pet = customer_can_afford_pet(customer, @new_pet)
-  #   assert_equal(true, can_buy_pet)
+  #   assert_equal(false, can_buy_pet)
   # end
