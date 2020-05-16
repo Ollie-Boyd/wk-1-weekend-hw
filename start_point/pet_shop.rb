@@ -1,5 +1,20 @@
 require("pry")
 
+module StockChecker
+    def is_in_stock?
+        self != nil
+    end
+end
+  
+class Hash
+    include StockChecker
+end
+  
+class NilClass
+    include StockChecker
+end
+
+
 def pet_shop_name(pet_shop)
     shop_name = pet_shop[:name]
     return shop_name
@@ -76,28 +91,8 @@ def customer_can_afford_pet(customer_details, pet_to_buy)
         return balance_greater_or_equal_to_pet_price
 end
 
-module MyRoot
-    def pet_exists
-        self != nil
-    end
-end
-  
-class Hash
-    include MyRoot
-end
-  
-class NilClass
-    include MyRoot
-end
-
-
-
 def sell_pet_to_customer(pet_shop, pet_to_buy, customer_details)
-    p pet_to_buy
-    p pet_to_buy != nil
-    p pet_to_buy.pet_exists
-    
-    if pet_to_buy.pet_exists && customer_can_afford_pet(customer_details, pet_to_buy)      
+    if pet_to_buy.is_in_stock? && customer_can_afford_pet(customer_details, pet_to_buy)      
         #get pet price
         pet_price = pet_price(pet_to_buy)
         #reduce customer cash
