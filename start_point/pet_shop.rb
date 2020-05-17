@@ -37,8 +37,6 @@ end
 
 
 
-
-
 def pet_shop_name(pet_shop)
     return pet_shop.get_name
 end
@@ -67,9 +65,9 @@ def stock_count(pet_shop)
 end
 
 def pets_by_breed(pet_shop, breed)
-    pets_with_matching_breed = pet_shop.all_pets.filter_map{ |pet| pet if pet[:breed] == breed}
-    ##or if Ruby version < 2.7
-    #pet_shop.all_pets.select{ |pet| pet[:breed] == breed}
+    pets_with_matching_breed = pet_shop.all_pets.select{ |pet| pet[:breed] == breed}
+    ##or if Ruby version > 2.6
+    #pets_with_matching_breed = pet_shop.all_pets.filter_map{ |pet| pet if pet[:breed] == breed}
     return pets_with_matching_breed
 end
 
